@@ -47,7 +47,7 @@ def vote(request, question_id): # function based views
     question = get_object_or_404(Question, pk=question_id) # Question.objects.get(pk=1) # Handle error for selected question
     
     try: # handle error for selected choice
-        selected_choice = question.choice_set.get(pk=request.POST["choice"])
+        selected_choice = question.choice_set.get(pk=request.POST["choice"]) # Rescata la opción que está en "value" del HTML llamado "choice" que es el id del objeto de tipo 'Choice'.
     except(KeyError, Choice.DoesNotExist):
         return render(request, "polls/detail.html", {
             "question": question,
